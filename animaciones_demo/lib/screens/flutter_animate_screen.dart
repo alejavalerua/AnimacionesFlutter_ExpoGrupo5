@@ -26,7 +26,7 @@ class FlutterAnimateScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: _bgColor,
       appBar: AppBar(
-        title: const Text('flutter_animate'),
+        title: const Text('Flutter Animate'),
         backgroundColor: _bgColor,
         foregroundColor: _textPrimary,
         elevation: 0,
@@ -64,7 +64,7 @@ class FlutterAnimateScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     const Text(
-                      'Animaciones modernas con flutter_animate',
+                      'Animaciones modernas con Flutter Animate',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
@@ -192,7 +192,7 @@ class FlutterAnimateScreen extends StatelessWidget {
                                     ),
                                     SizedBox(height: 12),
                                     Text(
-                                      'flutter_animate',
+                                      'Flutter Animate',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: Colors.white,

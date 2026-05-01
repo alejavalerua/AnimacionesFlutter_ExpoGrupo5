@@ -31,7 +31,7 @@ class _AnimatedOpacityScreenState extends State<AnimatedOpacityScreen> {
     return Scaffold(
       backgroundColor: _bgColor,
       appBar: AppBar(
-        title: const Text('AnimatedOpacity + AnimatedSwitcher'),
+        title: const Text('AnimatedOpacity'),
         backgroundColor: _bgColor,
         foregroundColor: _textPrimary,
         elevation: 0,
