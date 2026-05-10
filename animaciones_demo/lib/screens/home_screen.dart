@@ -21,14 +21,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final demos = [
       DemoItem(
-        title: 'AnimatedContainer',
+        title: 'Animated Container',
         subtitle: 'Animación implícita',
         icon: Icons.animation_rounded,
         color: const Color(0xFF9C27B0),
         screen: const AnimatedContainerScreen(),
       ),
       DemoItem(
-        title: 'AnimatedOpacity',
+        title: 'Animated     Opacity',
         subtitle: 'Aparición suave',
         icon: Icons.opacity_rounded,
         color: const Color(0xFF1E88E5),
@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
         screen: const HeroListScreen(),
       ),
       DemoItem(
-        title: 'AnimationController',
+        title: 'Animation Controller',
         subtitle: 'Animación explícita',
         icon: Icons.tune_rounded,
         color: const Color(0xFFE53935),
@@ -163,7 +163,7 @@ class _HeaderCard extends StatelessWidget {
                 SizedBox(width: 8),
                 Flexible(
                   child: Text(
-                    'Elvira Florez  •  Alejandra Valencia',
+                    'Elvira E. Florez Carbonell                   Alejandra Valencia Rua',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,

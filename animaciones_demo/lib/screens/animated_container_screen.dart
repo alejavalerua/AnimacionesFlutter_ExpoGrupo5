@@ -110,7 +110,7 @@ class _AnimatedContainerScreenState extends State<AnimatedContainerScreen> {
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
+                        horizontal: 9,
                         vertical: 10,
                       ),
                       decoration: BoxDecoration(
