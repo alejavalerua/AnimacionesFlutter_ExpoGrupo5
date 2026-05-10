@@ -134,6 +134,7 @@ class FlutterAnimateScreen extends StatelessWidget {
                     const SizedBox(height: 24),
                     Container(
                       width: double.infinity,
+                      height: 350,
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.45),
@@ -162,8 +163,8 @@ class FlutterAnimateScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 18),
                           Container(
-                                width: 230,
-                                height: 230,
+                                width: 200,
+                                height: 200,
                                 decoration: BoxDecoration(
                                   gradient: const LinearGradient(
                                     colors: [
@@ -219,19 +220,21 @@ class FlutterAnimateScreen extends StatelessWidget {
                                 duration: 500.ms,
                                 curve: Curves.easeOut,
                               ),
-                          const SizedBox(height: 18),
-                          const Text(
-                            'Fade + Scale + Shimmer + Slide',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: _textSecondary,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
                         ],
                       ),
                     ),
+
+                    const SizedBox(height: 18),
+                    const Text(
+                      'Fade + Scale + Shimmer + Slide',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: _textSecondary,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    
                     const SizedBox(height: 24),
                     GestureDetector(
                       onTap: () => _restartAnimation(context),

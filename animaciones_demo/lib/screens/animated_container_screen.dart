@@ -141,6 +141,7 @@ class _AnimatedContainerScreenState extends State<AnimatedContainerScreen> {
                     AnimatedContainer(
                       duration: const Duration(milliseconds: 800),
                       curve: Curves.easeInOutCubic,
+                      clipBehavior: Clip.antiAlias,
                       width: _isExpanded ? 250 : 130,
                       height: _isExpanded ? 220 : 130,
                       padding: EdgeInsets.all(_isExpanded ? 22 : 12),
@@ -173,44 +174,50 @@ class _AnimatedContainerScreenState extends State<AnimatedContainerScreen> {
                           ),
                         ],
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            _isExpanded
-                                ? Icons.auto_awesome_rounded
-                                : Icons.touch_app_rounded,
-                            size: _isExpanded ? 42 : 30,
-                            color: _isExpanded
-                                ? const Color(0xFF4B1E57)
-                                : Colors.white,
-                          ),
-                          SizedBox(height: _isExpanded ? 14 : 10),
-                          Text(
-                            _isExpanded ? 'Estado activo' : '¡Toca!',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
+                      child: OverflowBox(
+                        minHeight: 0,
+                        maxHeight: double.infinity,
+                        alignment: Alignment.center,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              _isExpanded
+                                  ? Icons.auto_awesome_rounded
+                                  : Icons.touch_app_rounded,
+                              size: _isExpanded ? 42 : 30,
                               color: _isExpanded
                                   ? const Color(0xFF4B1E57)
                                   : Colors.white,
-                              fontSize: _isExpanded ? 20 : 18,
-                              fontWeight: FontWeight.w800,
                             ),
-                          ),
-                          if (_isExpanded) ...[
-                            const SizedBox(height: 10),
-                            const Text(
-                              'Cambian tamaño,\ncolor, bordes y padding.',
+                            SizedBox(height: _isExpanded ? 14 : 10),
+                            Text(
+                              _isExpanded ? 'Estado activo' : '¡Toca!',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: Color(0xFF5F3668),
-                                fontSize: 13.5,
-                                fontWeight: FontWeight.w600,
-                                height: 1.35,
+                                color: _isExpanded
+                                    ? const Color(0xFF4B1E57)
+                                    : Colors.white,
+                                fontSize: _isExpanded ? 20 : 18,
+                                fontWeight: FontWeight.w800,
                               ),
                             ),
+                            if (_isExpanded) ...[
+                              const SizedBox(height: 10),
+                              const Text(
+                                'Cambian tamaño,\ncolor, bordes y padding.',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF5F3668),
+                                  fontSize: 13.5,
+                                  fontWeight: FontWeight.w600,
+                                  height: 1.35,
+                                ),
+                              ),
+                            ],
                           ],
-                        ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 28),

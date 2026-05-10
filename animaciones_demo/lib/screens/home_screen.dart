@@ -163,7 +163,7 @@ class _HeaderCard extends StatelessWidget {
                 SizedBox(width: 8),
                 Flexible(
                   child: Text(
-                    'Elvira E. Florez Carbonell                   Alejandra Valencia Rua',
+                    'Elvira Florez & Alejandra Valencia',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
