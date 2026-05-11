@@ -163,7 +163,7 @@ class _HeaderCard extends StatelessWidget {
                 SizedBox(width: 8),
                 Flexible(
                   child: Text(
-                    'Elvira Florez & Alejandra Valencia',
+                    'Elvira Florez Carbonell & Alejandra Valencia Rua',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -228,13 +228,6 @@ class _DemoCard extends StatelessWidget {
             color: HomeScreen._cardColor,
             borderRadius: BorderRadius.circular(24),
             border: Border.all(color: HomeScreen._borderColor),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 14,
-                offset: const Offset(0, 8),
-              ),
-            ],
           ),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(14, 14, 14, 16),
