@@ -131,7 +131,7 @@ class _AnimatedOpacityScreenState extends State<AnimatedOpacityScreen> {
                             style: TextStyle(
                               color: _accent,
                               fontWeight: FontWeight.w700,
-                              fontSize: 13.5,
+                              fontSize: 12,
                             ),
                           ),
                         ],

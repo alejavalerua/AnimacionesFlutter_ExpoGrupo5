@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class FlutterAnimateScreen extends StatelessWidget {
+class FlutterAnimateScreen extends StatefulWidget {
   const FlutterAnimateScreen({super.key});
 
   static const Color _bgColor = Color(0xFFF3EDF7);
@@ -14,21 +14,27 @@ class FlutterAnimateScreen extends StatelessWidget {
   static const Color _accent = Color(0xFFE91E63);
   static const Color _accentSoft = Color(0xFFFAD8E8);
 
-  void _restartAnimation(BuildContext context) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => const FlutterAnimateScreen()),
-    );
+  @override
+  State<FlutterAnimateScreen> createState() => _FlutterAnimateScreenState();
+}
+
+class _FlutterAnimateScreenState extends State<FlutterAnimateScreen> {
+  UniqueKey _animKey = UniqueKey();
+
+  void _restartAnimation() {
+    setState(() {
+      _animKey = UniqueKey();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _bgColor,
+      backgroundColor: FlutterAnimateScreen._bgColor,
       appBar: AppBar(
         title: const Text('Flutter Animate'),
-        backgroundColor: _bgColor,
-        foregroundColor: _textPrimary,
+        backgroundColor: FlutterAnimateScreen._bgColor,
+        foregroundColor: FlutterAnimateScreen._textPrimary,
         elevation: 0,
         centerTitle: true,
       ),
@@ -42,14 +48,17 @@ class FlutterAnimateScreen extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [_primary, _primaryDark],
+                    colors: [
+                      FlutterAnimateScreen._primary,
+                      FlutterAnimateScreen._primaryDark,
+                    ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(24),
                   boxShadow: [
                     BoxShadow(
-                      color: _primary.withOpacity(0.18),
+                      color: FlutterAnimateScreen._primary.withOpacity(0.18),
                       blurRadius: 20,
                       offset: const Offset(0, 10),
                     ),
@@ -90,9 +99,9 @@ class FlutterAnimateScreen extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: _cardColor,
+                  color: FlutterAnimateScreen._cardColor,
                   borderRadius: BorderRadius.circular(28),
-                  border: Border.all(color: _borderColor),
+                  border: Border.all(color: FlutterAnimateScreen._borderColor),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.04),
@@ -109,20 +118,24 @@ class FlutterAnimateScreen extends StatelessWidget {
                         vertical: 10,
                       ),
                       decoration: BoxDecoration(
-                        color: _accent.withOpacity(0.08),
+                        color: FlutterAnimateScreen._accent.withOpacity(0.08),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.bolt_rounded, size: 18, color: _accent),
+                          Icon(
+                            Icons.bolt_rounded,
+                            size: 18,
+                            color: FlutterAnimateScreen._accent,
+                          ),
                           SizedBox(width: 8),
                           Flexible(
                             child: Text(
                               'Efectos encadenados en una sola animación',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: _accent,
+                                color: FlutterAnimateScreen._accent,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.5,
                               ),
@@ -139,7 +152,9 @@ class FlutterAnimateScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.45),
                         borderRadius: BorderRadius.circular(24),
-                        border: Border.all(color: _borderColor),
+                        border: Border.all(
+                          color: FlutterAnimateScreen._borderColor,
+                        ),
                       ),
                       child: Column(
                         children: [
@@ -149,105 +164,115 @@ class FlutterAnimateScreen extends StatelessWidget {
                               vertical: 8,
                             ),
                             decoration: BoxDecoration(
-                              color: _accentSoft,
+                              color: FlutterAnimateScreen._accentSoft,
                               borderRadius: BorderRadius.circular(14),
                             ),
                             child: const Text(
                               'Card animada',
                               style: TextStyle(
                                 fontSize: 14.5,
-                                color: _accent,
+                                color: FlutterAnimateScreen._accent,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
                           const SizedBox(height: 18),
-                          Container(
-                                width: 200,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      Color(0xFFF8B9D5),
-                                      Color(0xFFE91E63),
-                                    ],
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                  ),
-                                  borderRadius: BorderRadius.circular(32),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: _accent.withOpacity(0.22),
-                                      blurRadius: 20,
-                                      offset: const Offset(0, 12),
-                                    ),
-                                  ],
-                                ),
-                                child: const Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.auto_awesome,
-                                      size: 82,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(height: 12),
-                                    Text(
-                                      'Flutter Animate',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 19,
-                                        fontWeight: FontWeight.w800,
+
+                          KeyedSubtree(
+                            key: _animKey,
+                            child:
+                                Container(
+                                      width: 200,
+                                      height: 200,
+                                      decoration: BoxDecoration(
+                                        gradient: const LinearGradient(
+                                          colors: [
+                                            Color(0xFFF8B9D5),
+                                            Color(0xFFE91E63),
+                                          ],
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                        ),
+                                        borderRadius: BorderRadius.circular(32),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: FlutterAnimateScreen._accent
+                                                .withOpacity(0.22),
+                                            blurRadius: 20,
+                                            offset: const Offset(0, 12),
+                                          ),
+                                        ],
                                       ),
+                                      child: const Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.auto_awesome,
+                                            size: 82,
+                                            color: Colors.white,
+                                          ),
+                                          SizedBox(height: 12),
+                                          Text(
+                                            'Flutter Animate',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 19,
+                                              fontWeight: FontWeight.w800,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                    .animate()
+                                    .fadeIn(
+                                      duration: 600.ms,
+                                      curve: Curves.easeOut,
+                                    )
+                                    .scale(
+                                      begin: const Offset(0.82, 0.82),
+                                      duration: 700.ms,
+                                      curve: Curves.easeOutBack,
+                                    )
+                                    .then(delay: 200.ms)
+                                    .shimmer(duration: 1200.ms)
+                                    .then(delay: 300.ms)
+                                    .slideY(
+                                      begin: 0.25,
+                                      end: 0,
+                                      duration: 500.ms,
+                                      curve: Curves.easeOut,
                                     ),
-                                  ],
-                                ),
-                              )
-                              .animate()
-                              .fadeIn(duration: 600.ms, curve: Curves.easeOut)
-                              .scale(
-                                begin: const Offset(0.82, 0.82),
-                                duration: 700.ms,
-                                curve: Curves.easeOutBack,
-                              )
-                              .then(delay: 200.ms)
-                              .shimmer(duration: 1200.ms)
-                              .then(delay: 300.ms)
-                              .slideY(
-                                begin: 0.25,
-                                end: 0,
-                                duration: 500.ms,
-                                curve: Curves.easeOut,
-                              ),
+                          ),
                         ],
                       ),
                     ),
-
                     const SizedBox(height: 18),
                     const Text(
                       'Fade + Scale + Shimmer + Slide',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: _textSecondary,
+                        color: FlutterAnimateScreen._textSecondary,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    
                     const SizedBox(height: 24),
                     GestureDetector(
-                      onTap: () => _restartAnimation(context),
+                      onTap: () => _restartAnimation(),
                       child: Container(
                         width: 210,
                         height: 52,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: _primary,
+                          color: FlutterAnimateScreen._primary,
                           borderRadius: BorderRadius.circular(18),
                           boxShadow: [
                             BoxShadow(
-                              color: _primary.withOpacity(0.18),
+                              color: FlutterAnimateScreen._primary.withOpacity(
+                                0.18,
+                              ),
                               blurRadius: 12,
                               offset: const Offset(0, 8),
                             ),
@@ -279,7 +304,7 @@ class FlutterAnimateScreen extends StatelessWidget {
                       'Ideal cuando queremos agregar transiciones llamativas de forma rápida y con mucho menos código que una animación manual.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: _textSecondary,
+                        color: FlutterAnimateScreen._textSecondary,
                         fontSize: 13.5,
                         height: 1.4,
                       ),

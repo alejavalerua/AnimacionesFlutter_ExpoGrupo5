@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
         screen: const AnimatedContainerScreen(),
       ),
       DemoItem(
-        title: 'Animated     Opacity',
+        title: 'Animated \nOpacity',
         subtitle: 'Aparición suave',
         icon: Icons.opacity_rounded,
         color: const Color(0xFF1E88E5),
@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
         screen: const LottieScreen(),
       ),
       DemoItem(
-        title: 'FlutterAnimate',
+        title: 'Flutter Animate',
         subtitle: 'Efectos rápidos',
         icon: Icons.auto_awesome_rounded,
         color: const Color(0xFFE91E63),
